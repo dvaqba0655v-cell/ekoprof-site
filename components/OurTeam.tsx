@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 const team = [
   {
@@ -24,8 +25,21 @@ const team = [
 ];
 
 export default function OurTeam() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [fallbackVisible, setFallbackVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isInView) setFallbackVisible(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [isInView]);
+
+  const shouldShow = isInView || fallbackVisible;
+
   return (
-    <section className="w-full py-12 bg-zinc-950 px-4 sm:px-6 relative border-t border-zinc-900/40">
+    <section ref={ref} className="w-full py-12 bg-zinc-950 px-4 sm:px-6 relative border-t border-zinc-900/40">
       <div className="max-w-5xl w-full mx-auto">
         <div className="text-center mb-10 space-y-3">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white uppercase italic">Наши <span className="text-orange-500 drop-shadow-[0_0_15px_rgba(234,88,12,0.4)]">мастера</span></h2>
@@ -37,8 +51,7 @@ export default function OurTeam() {
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={shouldShow ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
               className="bg-[rgba(10,10,10,0.85)] border border-[rgba(255,102,0,0.15)] rounded-2xl overflow-hidden hover:border-orange-500/50 transition-all group max-w-[320px] mx-auto w-full"
             >
