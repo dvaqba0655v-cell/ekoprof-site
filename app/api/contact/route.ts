@@ -14,14 +14,14 @@ export async function POST(request: Request) {
       port: 465,
       secure: true,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS, 
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD, 
       },
     });
 
     const mailOptions = {
-      from: `"[Новая Заявка] ЭкоПрофСервис" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+      from: `"[Новая Заявка] ЭкоПрофСервис" <${process.env.SMTP_USER}>`,
+      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       subject: `Новая заявка от ${name} | ЭкоПрофСервис`,
       text: `Поступила новая заявка с сайта ЭкоПрофСервис\n\nИмя: ${name}\nТелефон: ${phone}\nОбъект: ${objectType}\nТип загрязнения: ${cleaningType}`,
       html: `<div style="font-family:sans-serif; padding:20px; border:1px solid #ddd; border-radius:10px;">
