@@ -1,5 +1,5 @@
 "use client";
-import { X, MessageCircle, Send } from "lucide-react";
+import { User, Headset } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,7 +24,7 @@ export default function FloatingMessenger() {
 
   return (
     <>
-      {/* LEFT SIDE: Compact Duty Engineer Pill */}
+      {/* LEFT SIDE: Compact Duty Engineer (Circle on mobile, Pill on desktop) */}
       <AnimatePresence>
         {showEngineer && (
           <div className="fixed bottom-6 left-6 z-[95] pointer-events-none font-inter">
@@ -35,50 +35,30 @@ export default function FloatingMessenger() {
               initial={{ opacity: 0, scale: 0.8, x: -20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-zinc-900 backdrop-blur-xl border border-green-500/80 text-white shadow-[0_0_35px_rgba(34,197,94,0.6)] hover:shadow-[0_0_50px_rgba(34,197,94,0.8)] transition-all pointer-events-auto hover:bg-zinc-800 group"
+              className="flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:px-5 md:py-2.5 rounded-full bg-zinc-900/90 backdrop-blur-xl border border-green-500/80 text-white shadow-[0_0_35px_rgba(34,197,94,0.6)] hover:shadow-[0_0_50px_rgba(34,197,94,0.8)] transition-all pointer-events-auto hover:bg-zinc-800 group"
+              title="Дежурный инженер онлайн"
             >
-              <div className="relative flex h-4 w-4">
+              <div className="relative flex h-4 w-4 md:mr-3 items-center justify-center">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-80" />
                 <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 shadow-[0_0_15px_rgba(34,197,94,1)]" />
               </div>
-              <div className="flex flex-col">
+              
+              <div className="hidden md:flex flex-col">
                 <span className="text-[9px] font-bold text-green-400 uppercase tracking-[0.2em] leading-none mb-1">ОНЛАЙН</span>
                 <span className="text-xs font-black uppercase tracking-widest whitespace-nowrap text-white drop-shadow-md">Дежурный инженер</span>
+              </div>
+
+              {/* Mobile icon inside the circle when text is hidden */}
+              <div className="md:hidden absolute inset-0 flex items-center justify-center pointer-events-none">
+                 <Headset size={18} className="text-white opacity-40 ml-0.5" />
               </div>
             </motion.a>
           </div>
         )}
       </AnimatePresence>
 
-      {/* RIGHT SIDE: Messengers Stack */}
-      <div className="fixed bottom-6 right-6 z-[95] flex flex-col items-end gap-3 pointer-events-none font-inter">
-        
-        {/* MESSENGER ROW (WA + TG) */}
-        <div className="flex items-center gap-3">
-          <motion.a 
-            href="https://wa.me/79023391617" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1, y: -2 }}
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg border border-white/20 pointer-events-auto transition-transform overflow-hidden"
-            title="WhatsApp"
-          >
-            <MessageCircle size={24} fill="currentColor" className="text-white" />
-          </motion.a>
-
-          <motion.a 
-            href="https://t.me/79023391617" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1, y: -2 }}
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-[#0088cc] text-white shadow-lg border border-white/20 pointer-events-auto transition-transform overflow-hidden"
-            title="Telegram"
-          >
-            <Send size={20} fill="currentColor" className="text-white -ml-0.5" />
-          </motion.a>
-        </div>
-
-        {/* PRIMARY MAX BUTTON */}
+      {/* RIGHT SIDE: Primary MAX Button */}
+      <div className="fixed bottom-6 right-6 z-[95] pointer-events-none font-inter">
         <motion.a 
           href="https://web.max.ru/241672035" 
           target="_blank" 
