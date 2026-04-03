@@ -101,9 +101,23 @@ body {
   background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(255, 102, 0, 0.3);
   @apply rounded-3xl overflow-hidden transition-all duration-300;
+  will-change: transform, opacity;
 }
 
 .glass-card:hover {
   border: 1px solid rgba(255, 102, 0, 0.6);
   @apply shadow-[0_0_30px_rgba(234,88,12,0.15)];
 }
+
+/* Optimization for mobile scroll */
+@media (max-width: 768px) {
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+  }
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+

@@ -234,9 +234,9 @@ export default function DuctCleaningVisual() {
               transition={{ duration: 0.35 }}
               className="absolute bottom-14 left-6 right-6"
             >
-              <div className="text-3xl font-bold font-mono tracking-tight leading-none">
-                <span className="text-zinc-800">ВентГарант</span>
-                <span className="text-orange-600 font-extrabold drop-shadow-[0_0_8px_rgba(234,88,12,0.5)]">+</span>
+              <div className="text-2xl font-bold font-mono tracking-tight leading-none uppercase">
+                <span className="text-zinc-800">ЭкоПроф</span>
+                <span className="text-orange-600 font-extrabold drop-shadow-[0_0_8px_rgba(234,88,12,0.5)]">Сервис</span>
               </div>
               <div className="font-mono text-[9px] text-zinc-500 tracking-[0.25em] mt-1.5 uppercase">
                 Соответствует ГОСТ Р 12.3.018

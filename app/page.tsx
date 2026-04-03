@@ -33,23 +33,23 @@ export default function Home() {
         
         <div className="max-w-7xl w-full mx-auto flex flex-col items-center text-center relative z-20">
           
-          <div className="inline-flex items-center gap-3 px-6 py-2.5 mb-10 rounded-full border border-[rgba(255,102,0,0.3)] bg-[rgba(10,10,10,0.8)] text-orange-400 w-max text-sm sm:text-base font-semibold">
-            <div className="relative flex h-3 w-3">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 mb-8 rounded-full border border-[rgba(255,102,0,0.2)] bg-[rgba(10,10,10,0.85)] text-orange-400 w-max text-xs sm:text-sm font-bold tracking-tight">
+            <div className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
             </div>
-            <Zap size={16} /> <span>Мобильные бригады. Работаем 24/7. Приедем строго после закрытия вашего ресторана или смены на заводе.</span>
+            <Zap size={14} className="opacity-80" /> <span>Мобильные бригады работают 24/7 в Самаре</span>
           </div>
           
           {/* SINGLE-LINE H1 WITH SCROLL ZOOM & GRADIENT */}
           <motion.h1 
             style={{
-              scale: useTransform(scrollY, [0, 600], [1, 1.5]),
+              scale: useTransform(scrollY, [0, 600], [1, 1.2]),
               opacity: useTransform(scrollY, [0, 400, 600], [1, 0.6, 0]),
             }}
-            className="text-[clamp(1.5rem,7vw,8rem)] font-black leading-tight tracking-tight text-white whitespace-nowrap mb-6 will-change-transform"
+            className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.1] tracking-tight text-white mb-6 uppercase italic text-balance"
           >
-            ОЧИСТКА ВЕНТИЛЯЦИИ
+            Очистка вентиляции <br className="hidden md:block" /> <span className="text-orange-500">в Самаре</span>
           </motion.h1>
           
           <motion.h2
@@ -76,7 +76,7 @@ export default function Home() {
               </button>
             </MagneticWrapper>
             <MagneticWrapper>
-              <button data-magnetic onClick={() => setIsModalOpen(true)} className="flex w-full sm:w-auto items-center justify-center gap-3 bg-[rgba(20,20,20,0.8)] border border-[rgba(255,102,0,0.4)] hover:border-orange-500 hover:bg-zinc-900/80 text-white px-10 py-5 rounded-full text-lg sm:text-xl font-bold transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:-translate-y-1">
+              <button data-magnetic onClick={() => setIsModalOpen(true)} className="flex w-full sm:w-auto items-center justify-center gap-3 bg-[rgba(30,30,30,0.9)] border border-[rgba(255,102,0,0.6)] hover:border-orange-500 hover:bg-zinc-800 text-white px-10 py-5 rounded-full text-lg sm:text-xl font-bold transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_25px_rgba(234,88,12,0.4)] hover:-translate-y-1">
                 Оставить заявку
               </button>
             </MagneticWrapper>
@@ -97,31 +97,54 @@ export default function Home() {
       <FadeInSection>
         <section className="w-full py-10 sm:py-12 bg-[rgba(10,10,10,0.85)] border-y border-[rgba(255,102,0,0.2)] flex justify-center relative z-20 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
-          <div className="max-w-7xl w-full px-6 flex flex-wrap justify-center md:justify-between items-center gap-10 sm:gap-12 text-zinc-400 font-medium text-base sm:text-lg relative z-10">
-            <div className="flex items-center gap-4 hover:text-white transition-colors group cursor-default">
-              <div className="w-[160px] h-[160px] bg-white rounded-3xl flex items-center justify-center p-4 group-hover:scale-110 transition-transform shadow-[0_0_50px_rgba(255,255,255,0.2)] flex-shrink-0 border-2 border-orange-500/20">
-                <div className="relative w-full h-full">
-                  <Image src="/yandex.png" alt="Яндекс Услуги" fill sizes="160px" className="object-contain" />
-                </div>
+          <div className="max-w-7xl w-full px-6 flex flex-wrap justify-center lg:justify-between items-center gap-6 sm:gap-8 relative z-10">
+            {/* YANDEX CARD */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="flex items-center gap-6 px-8 py-5 rounded-3xl bg-white/95 backdrop-blur-md shadow-[0_10px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(255,255,255,0.15)] transition-all duration-300 group cursor-default"
+            >
+              <div className="w-[120px] h-10 relative">
+                <Image src="/yandex.png" alt="Яндекс Услуги" fill className="object-contain" />
               </div>
-              <span className="drop-shadow-md">Яндекс Услуги <strong className="text-white ml-2 text-2xl">4.9</strong></span>
-            </div>
-            <div className="flex items-center gap-4 hover:text-white transition-colors group cursor-default">
-              <div className="w-[160px] h-[160px] bg-white rounded-3xl flex items-center justify-center p-4 group-hover:scale-110 transition-transform shadow-[0_0_50px_rgba(255,255,255,0.2)] flex-shrink-0 border-2 border-orange-500/20">
-                <div className="relative w-full h-full">
-                  <Image src="/avito.png" alt="Авито" fill sizes="160px" className="object-contain" />
-                </div>
+              <div className="flex flex-col border-l border-zinc-200 pl-6">
+                <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest mb-1">Рейтинг</span>
+                <span className="text-2xl font-black text-zinc-900 flex items-center gap-2">
+                  4.9 <Star className="text-orange-500 fill-orange-500 mb-0.5" size={20} />
+                </span>
               </div>
-              <span className="drop-shadow-md">Авито <strong className="text-white ml-2 text-2xl">5.0</strong></span>
-            </div>
-            <div className="flex items-center gap-4 hover:text-white transition-colors group cursor-default">
-              <div className="w-[160px] h-[160px] bg-white rounded-3xl flex items-center justify-center p-4 group-hover:scale-110 transition-transform shadow-[0_0_50px_rgba(255,255,255,0.2)] flex-shrink-0 border-2 border-orange-500/20">
-                <div className="relative w-full h-full">
-                  <Image src="/profi.png" alt="Профи.ру" fill sizes="160px" className="object-contain" />
-                </div>
+            </motion.div>
+
+            {/* AVITO CARD */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="flex items-center gap-6 px-8 py-5 rounded-3xl bg-white/95 backdrop-blur-md shadow-[0_10px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(255,255,255,0.15)] transition-all duration-300 group cursor-default"
+            >
+              <div className="w-[120px] h-10 relative">
+                <Image src="/avito.png" alt="Авито" fill className="object-contain" />
               </div>
-              <span className="drop-shadow-md">Профи.ру <strong className="text-white ml-2 text-2xl">4.8</strong></span>
-            </div>
+              <div className="flex flex-col border-l border-zinc-200 pl-6">
+                <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest mb-1">Рейтинг</span>
+                <span className="text-2xl font-black text-zinc-900 flex items-center gap-2">
+                  5.0 <Star className="text-orange-500 fill-orange-500 mb-0.5" size={20} />
+                </span>
+              </div>
+            </motion.div>
+
+            {/* PROFI CARD */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="flex items-center gap-6 px-8 py-5 rounded-3xl bg-white/95 backdrop-blur-md shadow-[0_10px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(255,255,255,0.15)] transition-all duration-300 group cursor-default"
+            >
+              <div className="w-[120px] h-10 relative">
+                <Image src="/profi.png" alt="Профи.ру" fill className="object-contain" />
+              </div>
+              <div className="flex flex-col border-l border-zinc-200 pl-6">
+                <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest mb-1">Рейтинг</span>
+                <span className="text-2xl font-black text-zinc-900 flex items-center gap-2">
+                  4.8 <Star className="text-orange-500 fill-orange-500 mb-0.5" size={20} />
+                </span>
+              </div>
+            </motion.div>
           </div>
         </section>
       </FadeInSection>
@@ -379,7 +402,7 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">Очистка систем вентиляции <span className="text-orange-500">в Самаре</span></h2>
           <div className="text-zinc-500 text-sm sm:text-base leading-relaxed space-y-4">
             <p>
-              Компания ВентГарант+ оказывает профессиональные услуги по очистке систем вентиляции от жировых отложений в Самаре и Самарской области. Мы специализируемся на комплексной очистке вытяжных зонтов в ресторанах, кафе и столовых, а также на дезинфекции воздуховодов и проверке пожарной безопасности вентиляционных систем на объектах общественного питания и промышленных предприятиях.
+              Компания ЭкоПрофСервис оказывает профессиональные услуги по очистке систем вентиляции от жировых отложений в Самаре и Самарской области. Мы специализируемся на комплексной очистке вытяжных зонтов в ресторанах, кафе и столовых, а также на дезинфекции воздуховодов и проверке пожарной безопасности вентиляционных систем на объектах общественного питания и промышленных предприятиях.
             </p>
             <p>
               Регулярная очистка вентиляции от жира и пыли является обязательным требованием СанПиН 2.3/2.4.3590-20 и ППБ 01-03. Накопление жировых отложений в воздуховодах создаёт прямую угрозу возгорания, снижает эффективность вентиляционной системы и ведёт к штрафам при проверках Роспотребнадзора и пожарных инспекций. Наши специалисты выполняют очистку зонтов в ресторанах, кафе, пекарнях, производственных цехах и торговых центрах.
@@ -388,7 +411,7 @@ export default function Home() {
               Мы используем современное оборудование: роторные щёточные машины со скоростью до 800 оборотов в минуту, промышленные пеногенераторы с активной щелочной пеной и вакуумные установки с HEPA-фильтрацией. Все работы выполняются строго по ГОСТ Р 12.3.018 с полным документальным сопровождением: акты ВДПО, смывы на ОМЧ, журнал очистки, фотофиксация. Дезинфекция воздуховодов проводится сертифицированными средствами с выдачей акта для Роспотребнадзора.
             </p>
             <p>
-              Работаем по всей Самаре и Самарской области. Выезд инженера для бесплатной телеинспекции и составления сметы — в день обращения. Звоните круглосуточно: наши дежурные бригады готовы к выезду 24 часа в сутки, 7 дней в неделю, включая праздники. Очистка зонтов вытяжной вентиляции и проверка пожарной безопасности — доверьте это профессионалам ВентГарант+.
+              Работаем по всей Самаре и Самарской области. Выезд инженера для бесплатной телеинспекции и составления сметы — в день обращения. Звоните круглосуточно: наши дежурные бригады готовы к выезду 24 часа в сутки, 7 дней в неделю, включая праздники. Очистка зонтов вытяжной вентиляции и проверка пожарной безопасности — доверьте это профессионалам из ЭкоПрофСервис.
             </p>
           </div>
         </div>

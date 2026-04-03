@@ -306,9 +306,9 @@ export default function HolographicVentsScan() {
               transition={{ duration: 0.4 }}
               className="absolute bottom-14 left-6 z-20"
             >
-              <div className="text-2xl font-bold font-mono tracking-tight leading-none">
-                <span className="text-cyan-300 drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]">ВентГарант</span>
-                <span className="text-orange-500 font-extrabold drop-shadow-[0_0_8px_rgba(234,88,12,0.5)]">+</span>
+              <div className="text-xl font-bold font-mono tracking-tight leading-none uppercase">
+                <span className="text-cyan-300 drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]">ЭкоПроф</span>
+                <span className="text-orange-500 font-extrabold drop-shadow-[0_0_8px_rgba(234,88,12,0.5)]">Сервис</span>
               </div>
               <div className="font-mono text-[8px] text-cyan-500/50 tracking-[0.3em] mt-1.5 uppercase">
                 Соответствует ГОСТ Р 12.3.018

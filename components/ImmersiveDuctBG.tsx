@@ -3,11 +3,17 @@ import { useEffect, useState } from "react";
 import { motion, useSpring, useScroll, useTransform } from "framer-motion";
 
 export default function ImmersiveDuctBG() {
+  const [isMobile, setIsMobile] = useState(false);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    
     const onMove = (e: MouseEvent) => {
+      if (window.innerWidth < 768) return;
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
       setMouse({
@@ -16,22 +22,31 @@ export default function ImmersiveDuctBG() {
       });
     };
     window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", onMove);
+    };
   }, []);
 
   const spring = { stiffness: 150, damping: 25, mass: 0.8 };
 
   // Layer 1 (Deep): 5% mouse shift
-  const deepX = useSpring(mouse.x * -15, spring);
-  const deepY = useSpring(mouse.y * -15, spring);
+  const deepBaseX = isMobile ? 0 : mouse.x * -15;
+  const deepBaseY = isMobile ? 0 : mouse.y * -15;
+  const deepX = useSpring(deepBaseX, spring);
+  const deepY = useSpring(deepBaseY, spring);
 
   // Layer 2 (Middle): 15% mouse shift
-  const midX = useSpring(mouse.x * -45, spring);
-  const midY = useSpring(mouse.y * -45, spring);
+  const midBaseX = isMobile ? 0 : mouse.x * -45;
+  const midBaseY = isMobile ? 0 : mouse.y * -45;
+  const midX = useSpring(midBaseX, spring);
+  const midY = useSpring(midBaseY, spring);
 
   // Layer 3 (Front): 30% mouse shift
-  const frontX = useSpring(mouse.x * 90, spring);
-  const frontY = useSpring(mouse.y * 90, spring);
+  const frontBaseX = isMobile ? 0 : mouse.x * 90;
+  const frontBaseY = isMobile ? 0 : mouse.y * 90;
+  const frontX = useSpring(frontBaseX, spring);
+  const frontY = useSpring(frontBaseY, spring);
 
   // Scroll-driven particle zoom
   const particleScale = useTransform(scrollY, [0, 800], [1, 2.5]);

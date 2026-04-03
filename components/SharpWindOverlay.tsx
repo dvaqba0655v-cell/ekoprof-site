@@ -29,7 +29,7 @@ export default function SharpWindOverlay() {
   ];
 
   return (
-    <div className="fixed inset-0 z-10 pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 z-10 pointer-events-none overflow-hidden hidden md:block">
 
       {/* ── Clear Sharp Layer ── */}
       <motion.div
