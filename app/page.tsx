@@ -24,7 +24,7 @@ export default function Home() {
     <div className="bg-red-600 text-white text-center py-2 font-bold z-50 relative w-full text-lg">
       Проверка связи с новым ПК
     </div>
-    <div className="flex flex-col w-full bg-zinc-950 text-white selection:bg-orange-600 selection:text-white pb-32 overflow-x-hidden">
+    <div className="flex flex-col w-full bg-zinc-950 text-white selection:bg-orange-600 selection:text-white pb-32">
       
       {/* IMPRESSIVE HERO SECTION */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden px-4 sm:px-6">

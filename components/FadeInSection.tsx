@@ -13,7 +13,7 @@ export default function FadeInSection({
   delay?: number;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px 0px -50px 0px" });
   const [fallbackVisible, setFallbackVisible] = useState(false);
 
   // Fallback: if section hasn't appeared after 2s, force it visible

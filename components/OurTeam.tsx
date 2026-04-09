@@ -26,7 +26,7 @@ const team = [
 
 export default function OurTeam() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px 0px -50px 0px" });
   const [fallbackVisible, setFallbackVisible] = useState(false);
 
   useEffect(() => {
