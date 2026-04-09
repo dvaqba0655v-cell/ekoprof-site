@@ -21,9 +21,6 @@ export default function Home() {
 
   return (
     <>
-    <div className="bg-red-600 text-white text-center py-2 font-bold z-50 relative w-full text-lg">
-      Проверка связи с новым ПК
-    </div>
     <div className="flex flex-col w-full bg-zinc-950 text-white selection:bg-orange-600 selection:text-white pb-32 overflow-x-hidden">
       
       {/* IMPRESSIVE HERO SECTION */}
